@@ -1,0 +1,16 @@
+{% extends "base.html" %}{% block body %}
+<div class="card"><h2>{{ m.full_name }}</h2>
+<p>{{ m.email }} · {{ m.phone }} · {{ m.city }}, {{ m.country }}<br>
+{{ m.job_title }} @ {{ m.company }} · {{ m.aws_level }}<br>
+Certs: {{ m.certifications }} · Skills: {{ m.skills }}<br>
+{% if m.linkedin_url %}<a href="{{ m.linkedin_url }}">LinkedIn</a>{% endif %}</p>
+<p>{{ m.bio }}</p>
+<h3>Files</h3>
+<table><tr><th>Type</th><th>Name</th><th>Size</th></tr>
+{% for f in files %}
+<tr><td>{{ f.category }}</td>
+<td><a href="{{ url_for('download', upload_id=f.id) }}">{{ f.relative_path or f.original_name }}</a></td>
+<td>{{ (f.size_bytes or 0) // 1024 }} KB</td></tr>
+{% endfor %}</table>
+<p><a href="{{ url_for('admin') }}">← Back</a></p></div>
+{% endblock %}

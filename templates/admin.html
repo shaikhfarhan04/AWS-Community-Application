@@ -1,0 +1,8 @@
+{% extends "base.html" %}{% block body %}
+<div class="card"><h2>Members ({{ members|length }})</h2>
+<table><tr><th>Name</th><th>Email</th><th>Level</th><th>Files</th><th>Joined</th></tr>
+{% for m in members %}
+<tr><td><a href="{{ url_for('member', mid=m.id) }}">{{ m.full_name }}</a></td><td>{{ m.email }}</td>
+<td>{{ m.aws_level }}</td><td>{{ m.n_files }}</td><td>{{ m.created_at }}</td></tr>
+{% endfor %}</table></div>
+{% endblock %}

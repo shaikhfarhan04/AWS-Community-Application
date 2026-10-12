@@ -1,0 +1,13 @@
+[Unit]
+Description=AWS Community (gunicorn)
+After=network.target mysqld.service
+
+[Service]
+User=ec2-user
+WorkingDirectory=/opt/aws-community
+EnvironmentFile=/opt/aws-community/.env
+ExecStart=/opt/aws-community/venv/bin/gunicorn -w 3 -b 127.0.0.1:8000 app:app
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

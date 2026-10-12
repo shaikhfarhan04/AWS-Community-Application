@@ -1,0 +1,37 @@
+{% extends "base.html" %}{% block body %}
+<div class="card">
+<h2>Join the AWS Community</h2>
+<form method="post" enctype="multipart/form-data">
+  <div class="row">
+    <div><label>Full name *</label><input name="full_name" required value="{{ form.full_name if form }}"></div>
+    <div><label>Email *</label><input name="email" type="email" required value="{{ form.email if form }}"></div>
+  </div>
+  <div class="row">
+    <div><label>Phone</label><input name="phone"></div>
+    <div><label>LinkedIn URL</label><input name="linkedin_url" type="url"></div>
+  </div>
+  <div class="row">
+    <div><label>City</label><input name="city"></div>
+    <div><label>Country</label><input name="country"></div>
+  </div>
+  <div class="row">
+    <div><label>Job title</label><input name="job_title"></div>
+    <div><label>Company</label><input name="company"></div>
+  </div>
+  <div class="row">
+    <div><label>AWS experience</label>
+      <select name="aws_level"><option>Beginner</option><option>Intermediate</option><option>Advanced</option><option>Expert</option></select></div>
+    <div><label>AWS certifications</label><input name="certifications" placeholder="SAA-C03, DVA-C02"></div>
+  </div>
+  <label>Skills</label><input name="skills" placeholder="EC2, S3, Terraform, Docker">
+  <label>About you</label><textarea name="bio" rows="3"></textarea>
+
+  <label>Resume (PDF / DOC / DOCX)</label><input type="file" name="resume" accept=".pdf,.doc,.docx">
+  <label>Additional files <small>(certificates, project docs, screenshots)</small></label>
+  <input type="file" name="files" multiple>
+  <label>Upload a whole folder <small>(structure is preserved)</small></label>
+  <input type="file" name="folder" webkitdirectory multiple>
+  <small>Max total upload 100 MB.</small><br>
+  <button type="submit">Submit</button>
+</form></div>
+{% endblock %}
